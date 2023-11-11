@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.scss";
+import Table from "./components/Table";
+import Statistics from "./components/Statistics";
+
+const page3 = "Page2";
+const statistics = "statistics";
+const table = "table";
 
 function App() {
+  const [currentPage, setcurrentPage] = useState("table");
+  const [statisticsData, setStatisticsData] = useState(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => setcurrentPage(table)}>{table}</button>
+      <button onClick={() => setcurrentPage(statistics)}>{statistics}</button>
+      <button onClick={() => setcurrentPage(page3)}>{page3}</button>
+      {currentPage === table && (
+        <Table onConfirm={(data) => setStatisticsData(data)} />
+      )}
+      {currentPage === statistics && <Statistics data={statisticsData} />}
+      {currentPage === page3 && <div>Страница3</div>}
     </div>
   );
 }

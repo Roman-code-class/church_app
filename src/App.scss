@@ -1,0 +1,7 @@
+@import "~bootstrap/scss/bootstrap";
+
+.btn-del {
+  &:hover .del-button {
+    fill: white;
+  }
+}
